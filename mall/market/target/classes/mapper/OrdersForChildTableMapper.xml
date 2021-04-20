@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.OrdersForChildTableMapper">
+  <resultMap id="BaseResultMap" type="com.domain.OrdersForChildTable">
+    <!--@mbg.generated-->
+    <!--@Table orders_for_child_table-->
+    <id column="OrderItemId" jdbcType="INTEGER" property="orderitemid" />
+    <result column="OrderId" jdbcType="INTEGER" property="orderid" />
+    <result column="GoodsId" jdbcType="INTEGER" property="goodsid" />
+    <result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+    <result column="GoodsCoverImg" jdbcType="LONGNVARCHAR" property="goodscoverimg" />
+    <result column="SellingPrice" jdbcType="INTEGER" property="sellingprice" />
+    <result column="GoodsCount" jdbcType="INTEGER" property="goodscount" />
+    <result column="CreateTime" jdbcType="DATE" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    OrderItemId, OrderId, GoodsId, GoodsName, GoodsCoverImg, SellingPrice, GoodsCount, 
+    CreateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from orders_for_child_table
+    where OrderItemId = #{orderitemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from orders_for_child_table
+    where OrderItemId = #{orderitemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.domain.OrdersForChildTable">
+    <!--@mbg.generated-->
+    insert into orders_for_child_table (OrderItemId, OrderId, GoodsId, 
+      GoodsName, GoodsCoverImg, SellingPrice, 
+      GoodsCount, CreateTime)
+    values (#{orderitemid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, 
+      #{goodsname,jdbcType=VARCHAR}, #{goodscoverimg,jdbcType=LONGNVARCHAR}, #{sellingprice,jdbcType=INTEGER},
+      #{goodscount,jdbcType=INTEGER}, #{createtime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.OrdersForChildTable">
+    <!--@mbg.generated-->
+    insert into orders_for_child_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderitemid != null">
+        OrderItemId,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="goodsname != null">
+        GoodsName,
+      </if>
+      <if test="goodscoverimg != null">
+        GoodsCoverImg,
+      </if>
+      <if test="sellingprice != null">
+        SellingPrice,
+      </if>
+      <if test="goodscount != null">
+        GoodsCount,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderitemid != null">
+        #{orderitemid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscoverimg != null">
+        #{goodscoverimg,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="sellingprice != null">
+        #{sellingprice,jdbcType=INTEGER},
+      </if>
+      <if test="goodscount != null">
+        #{goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.OrdersForChildTable">
+    <!--@mbg.generated-->
+    update orders_for_child_table
+    <set>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null">
+        GoodsName = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscoverimg != null">
+        GoodsCoverImg = #{goodscoverimg,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="sellingprice != null">
+        SellingPrice = #{sellingprice,jdbcType=INTEGER},
+      </if>
+      <if test="goodscount != null">
+        GoodsCount = #{goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=DATE},
+      </if>
+    </set>
+    where OrderItemId = #{orderitemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.OrdersForChildTable">
+    <!--@mbg.generated-->
+    update orders_for_child_table
+    set OrderId = #{orderid,jdbcType=INTEGER},
+      GoodsId = #{goodsid,jdbcType=INTEGER},
+      GoodsName = #{goodsname,jdbcType=VARCHAR},
+      GoodsCoverImg = #{goodscoverimg,jdbcType=LONGNVARCHAR},
+      SellingPrice = #{sellingprice,jdbcType=INTEGER},
+      GoodsCount = #{goodscount,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=DATE}
+    where OrderItemId = #{orderitemid,jdbcType=INTEGER}
+  </update>
+
+    <select id="querychild" resultType="com.domain.OrdersForChildTable">
+  select <include refid="Base_Column_List" /> from orders_for_child_table where OrderId=#{orderid,jdbcType=INTEGER}
+    </select>
+</mapper>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.GoodsTableMapper">
+  <resultMap id="BaseResultMap" type="com.domain.GoodsTable">
+    <!--@mbg.generated-->
+    <!--@Table goods_table-->
+    <id column="GoodsId" jdbcType="INTEGER" property="goodsid" />
+    <result column="MerchantsID" jdbcType="INTEGER" property="merchantsid" />
+    <result column="GoodsName" jdbcType="VARCHAR" property="goodsname" />
+    <result column="GoodsIntro" jdbcType="VARCHAR" property="goodsintro" />
+    <result column="GoodsCategoryId" jdbcType="INTEGER" property="goodscategoryid" />
+    <result column="GoodsCoverImg1" jdbcType="LONGNVARCHAR" property="goodscoverimg1" />
+    <result column="GoodsCoverImg2" jdbcType="LONGNVARCHAR" property="goodscoverimg2" />
+    <result column="GoodsCoverImg3" jdbcType="LONGNVARCHAR" property="goodscoverimg3" />
+    <result column="GoodsCarousel" jdbcType="VARCHAR" property="goodscarousel" />
+    <result column="OriginalPrice" jdbcType="INTEGER" property="originalprice" />
+    <result column="SellingPrice" jdbcType="INTEGER" property="sellingprice" />
+    <result column="StockNum" jdbcType="INTEGER" property="stocknum" />
+    <result column="Tag" jdbcType="VARCHAR" property="tag" />
+    <result column="GoodsSellStatus" jdbcType="INTEGER" property="goodssellstatus" />
+    <result column="CreateUser" jdbcType="VARCHAR" property="createuser" />
+    <result column="CreateTime" jdbcType="DATE" property="createtime" />
+    <result column="UpdateUser" jdbcType="VARCHAR" property="updateuser" />
+    <result column="UpdateTime" jdbcType="DATE" property="updatetime" />
+    <result column="GoodsDetailContent" jdbcType="VARCHAR" property="goodsdetailcontent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    GoodsId, MerchantsID, GoodsName, GoodsIntro, GoodsCategoryId, GoodsCoverImg1 ,
+    GoodsCoverImg2 , GoodsCoverImg3, GoodsCarousel, OriginalPrice, SellingPrice, StockNum, Tag, GoodsSellStatus, CreateUser, CreateTime,
+    UpdateUser, UpdateTime, GoodsDetailContent
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from goods_table
+    where GoodsId = #{goodsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from goods_table
+    where GoodsId = #{goodsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.domain.GoodsTable">
+    <!--@mbg.generated-->
+    insert into goods_table (GoodsId, MerchantsID, GoodsName, 
+      GoodsIntro, GoodsCategoryId, GoodsCoverImg1, GoodsCoverImg2, GoodsCoverImg3,
+      GoodsCarousel, OriginalPrice, SellingPrice, 
+      StockNum, Tag, GoodsSellStatus, 
+      CreateUser, CreateTime, UpdateUser,
+      UpdateTime, GoodsDetailContent)
+    values (#{goodsid,jdbcType=INTEGER}, #{merchantsid,jdbcType=INTEGER}, #{goodsname,jdbcType=VARCHAR}, 
+      #{goodsintro,jdbcType=VARCHAR}, #{goodscategoryid,jdbcType=INTEGER}, #{goodscoverimg1,jdbcType=LONGNVARCHAR},#{goodscoverimg2,jdbcType=LONGNVARCHAR},#{goodscoverimg3,jdbcType=LONGNVARCHAR},
+      #{goodscarousel,jdbcType=VARCHAR}, #{originalprice,jdbcType=INTEGER}, #{sellingprice,jdbcType=INTEGER}, 
+      #{stocknum,jdbcType=INTEGER}, #{tag,jdbcType=VARCHAR}, #{goodssellstatus,jdbcType=INTEGER}, 
+      #{createuser,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, #{updateuser,jdbcType=VARCHAR},
+      #{updatetime,jdbcType=DATE}, #{goodsdetailcontent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.GoodsTable">
+    <!--@mbg.generated-->
+    insert into goods_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="merchantsid != null">
+        MerchantsID,
+      </if>
+      <if test="goodsname != null">
+        GoodsName,
+      </if>
+      <if test="goodsintro != null">
+        GoodsIntro,
+      </if>
+      <if test="goodscategoryid != null">
+        GoodsCategoryId,
+      </if>
+      <if test="goodscoverimg1 != null">
+        GoodsCoverImg1,
+      </if>
+      <if test="goodscoverimg2 != null">
+        GoodsCoverImg2,
+      </if>
+      <if test="goodscoverimg3 != null">
+        GoodsCoverImg3,
+      </if>
+      <if test="goodscarousel != null">
+        GoodsCarousel,
+      </if>
+      <if test="originalprice != null">
+        OriginalPrice,
+      </if>
+      <if test="sellingprice != null">
+        SellingPrice,
+      </if>
+      <if test="stocknum != null">
+        StockNum,
+      </if>
+      <if test="tag != null">
+        Tag,
+      </if>
+      <if test="goodssellstatus != null">
+        GoodsSellStatus,
+      </if>
+      <if test="createuser != null">
+        CreateUser,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="updateuser != null">
+        UpdateUser,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+      <if test="goodsdetailcontent != null">
+        GoodsDetailContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="merchantsid != null">
+        #{merchantsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null">
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsintro != null">
+        #{goodsintro,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscategoryid != null">
+        #{goodscategoryid,jdbcType=INTEGER},
+      </if>
+      <if test="goodscoverimg1 != null">
+        #{goodscoverimg1,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="goodscoverimg2 != null">
+        #{goodscoverimg2,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="goodscoverimg3 != null">
+        #{goodscoverimg3,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="goodscarousel != null">
+        #{goodscarousel,jdbcType=VARCHAR},
+      </if>
+      <if test="originalprice != null">
+        #{originalprice,jdbcType=INTEGER},
+      </if>
+      <if test="sellingprice != null">
+        #{sellingprice,jdbcType=INTEGER},
+      </if>
+      <if test="stocknum != null">
+        #{stocknum,jdbcType=INTEGER},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="goodssellstatus != null">
+        #{goodssellstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="goodsdetailcontent != null">
+        #{goodsdetailcontent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.GoodsTable">
+    <!--@mbg.generated-->
+    update goods_table
+    <set>
+      <if test="merchantsid != null">
+        MerchantsID = #{merchantsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null">
+        GoodsName = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsintro != null">
+        GoodsIntro = #{goodsintro,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscategoryid != null">
+        GoodsCategoryId = #{goodscategoryid,jdbcType=INTEGER},
+      </if>
+      <if test="goodscoverimg1 != null">
+        GoodsCoverImg1 = #{goodscoverimg1,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="goodscoverimg2 != null">
+        GoodsCoverImg2 = #{goodscoverimg2,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="goodscoverimg3 != null">
+        GoodsCoverImg3 = #{goodscoverimg3,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="goodscarousel != null">
+        GoodsCarousel = #{goodscarousel,jdbcType=VARCHAR},
+      </if>
+      <if test="originalprice != null">
+        OriginalPrice = #{originalprice,jdbcType=INTEGER},
+      </if>
+      <if test="sellingprice != null">
+        SellingPrice = #{sellingprice,jdbcType=INTEGER},
+      </if>
+      <if test="stocknum != null">
+        StockNum = #{stocknum,jdbcType=INTEGER},
+      </if>
+      <if test="tag != null">
+        Tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="goodssellstatus != null">
+        GoodsSellStatus = #{goodssellstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createuser != null">
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="updateuser != null">
+        UpdateUser = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="goodsdetailcontent != null">
+        GoodsDetailContent = #{goodsdetailcontent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GoodsId = #{goodsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.GoodsTable">
+    <!--@mbg.generated-->
+    update goods_table
+    set MerchantsID = #{merchantsid,jdbcType=INTEGER},
+      GoodsName = #{goodsname,jdbcType=VARCHAR},
+      GoodsIntro = #{goodsintro,jdbcType=VARCHAR},
+      GoodsCategoryId = #{goodscategoryid,jdbcType=INTEGER},
+      GoodsCoverImg1 = #{goodscoverimg1,jdbcType=LONGNVARCHAR},
+      GoodsCoverImg2 = #{goodscoverimg2,jdbcType=LONGNVARCHAR},
+      GoodsCoverImg3 = #{goodscoverimg3,jdbcType=LONGNVARCHAR},
+      GoodsCarousel = #{goodscarousel,jdbcType=VARCHAR},
+      OriginalPrice = #{originalprice,jdbcType=INTEGER},
+      SellingPrice = #{sellingprice,jdbcType=INTEGER},
+      StockNum = #{stocknum,jdbcType=INTEGER},
+      Tag = #{tag,jdbcType=VARCHAR},
+      GoodsSellStatus = #{goodssellstatus,jdbcType=INTEGER},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=DATE},
+      UpdateUser = #{updateuser,jdbcType=VARCHAR},
+      UpdateTime = #{updatetime,jdbcType=DATE},
+      GoodsDetailContent = #{goodsdetailcontent,jdbcType=VARCHAR}
+    where GoodsId = #{goodsid,jdbcType=INTEGER}
+  </update>
+
+  <select id="list" resultType="com.domain.GoodsTable">select <include refid="Base_Column_List" /> from goods_table</select>
+
+  <select id="queryByType" resultMap="BaseResultMap">
+  select <include refid="Base_Column_List" /> from goods_table where GoodsCategoryId=#{typeId,jdbcType=INTEGER}
+    </select>
+
+  <select id="queryByTypeUser" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from goods_table where CreateUser=#{CreateUser,jdbcType=VARCHAR}
+  </select>
+
+  <select id="random" resultType="com.domain.GoodsTable">
+    SELECT <include refid="Base_Column_List" /> FROM goods_table ORDER BY RAND() LIMIT #{number,jdbcType=INTEGER};
+    </select>
+    <select id="search" resultType="com.domain.GoodsTable">
+    SELECT <include refid="Base_Column_List" /> FROM goods_table where GoodsName like "%"#{str,jdbcType=VARCHAR}"%";
+  </select>
+
+
+    <select id="selectByGoodsID"  resultType="com.domain.GoodsTable">
+        SELECT  gt.GoodsId goodsid, gt.MerchantsID merchantsid, gt.GoodsName goodsname, gt.GoodsIntro goodsintro,
+         gt.GoodsCategoryId goodscategoryid, gt.GoodsCoverImg1 goodscoverimg1,
+    gt.GoodsCoverImg2 goodscoverimg2, gt.GoodsCoverImg3 goodscoverimg3, gt.GoodsCarousel goodscarousel,
+     gt.OriginalPrice originalprice, gt.SellingPrice sellingprice, gt.StockNum stocknum,
+    gt.Tag tag, gt.GoodsSellStatus goodssellstatus, gt.CreateUser createuser, gt.CreateTime createtime,
+    gt.UpdateUser updateuser, gt.UpdateTime updatetime, gt.GoodsDetailContent goodsdetailcontent
+         FROM goods_table gt INNER JOIN the_cart_table ct ON gt.GoodsId=ct.GoodsId
+         WHERE ct.UserId=#{userid,jdbcType=INTEGER};
+
+    </select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TheOrderSheetMapper">
+  <resultMap id="BaseResultMap" type="com.domain.TheOrderSheet">
+    <!--@mbg.generated-->
+    <!--@Table the_order_sheet-->
+    <id column="OrderId" jdbcType="INTEGER" property="orderid" />
+    <result column="OrderNo" jdbcType="VARCHAR" property="orderno" />
+    <result column="UserId" jdbcType="VARCHAR" property="userid" />
+    <result column="TotalPrice" jdbcType="INTEGER" property="totalprice" />
+    <result column="PayStatus" jdbcType="INTEGER" property="paystatus" />
+    <result column="PayType" jdbcType="INTEGER" property="paytype" />
+    <result column="PayTime" jdbcType="DATE" property="paytime" />
+    <result column="OrderStatus" jdbcType="INTEGER" property="orderstatus" />
+    <result column="ExtraInfo" jdbcType="VARCHAR" property="extrainfo" />
+    <result column="UserAddress" jdbcType="VARCHAR" property="useraddress" />
+    <result column="IsDeleted" jdbcType="INTEGER" property="isdeleted" />
+    <result column="UpdateTime" jdbcType="DATE" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    OrderId, OrderNo, UserId, TotalPrice, PayStatus, PayType, PayTime, OrderStatus, ExtraInfo, 
+    UserAddress, IsDeleted, UpdateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from the_order_sheet
+    where OrderId = #{orderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from the_order_sheet
+    where OrderId = #{orderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.domain.TheOrderSheet">
+    <!--@mbg.generated-->
+    insert into the_order_sheet (OrderId, OrderNo, UserId, 
+      TotalPrice, PayStatus, PayType, 
+      PayTime, OrderStatus, ExtraInfo, 
+      UserAddress, IsDeleted, UpdateTime
+      )
+    values (#{orderid,jdbcType=INTEGER}, #{orderno,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
+      #{totalprice,jdbcType=INTEGER}, #{paystatus,jdbcType=INTEGER}, #{paytype,jdbcType=INTEGER}, 
+      #{paytime,jdbcType=DATE}, #{orderstatus,jdbcType=INTEGER}, #{extrainfo,jdbcType=VARCHAR}, 
+      #{useraddress,jdbcType=VARCHAR}, #{isdeleted,jdbcType=INTEGER}, #{updatetime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.TheOrderSheet">
+    <!--@mbg.generated-->
+    insert into the_order_sheet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="orderno != null">
+        OrderNo,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="totalprice != null">
+        TotalPrice,
+      </if>
+      <if test="paystatus != null">
+        PayStatus,
+      </if>
+      <if test="paytype != null">
+        PayType,
+      </if>
+      <if test="paytime != null">
+        PayTime,
+      </if>
+      <if test="orderstatus != null">
+        OrderStatus,
+      </if>
+      <if test="extrainfo != null">
+        ExtraInfo,
+      </if>
+      <if test="useraddress != null">
+        UserAddress,
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null">
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="totalprice != null">
+        #{totalprice,jdbcType=INTEGER},
+      </if>
+      <if test="paystatus != null">
+        #{paystatus,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="paytime != null">
+        #{paytime,jdbcType=DATE},
+      </if>
+      <if test="orderstatus != null">
+        #{orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="extrainfo != null">
+        #{extrainfo,jdbcType=VARCHAR},
+      </if>
+      <if test="useraddress != null">
+        #{useraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.TheOrderSheet">
+    <!--@mbg.generated-->
+    update the_order_sheet
+    <set>
+      <if test="orderno != null">
+        OrderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="totalprice != null">
+        TotalPrice = #{totalprice,jdbcType=INTEGER},
+      </if>
+      <if test="paystatus != null">
+        PayStatus = #{paystatus,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        PayType = #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="paytime != null">
+        PayTime = #{paytime,jdbcType=DATE},
+      </if>
+      <if test="orderstatus != null">
+        OrderStatus = #{orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="extrainfo != null">
+        ExtraInfo = #{extrainfo,jdbcType=VARCHAR},
+      </if>
+      <if test="useraddress != null">
+        UserAddress = #{useraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=DATE},
+      </if>
+    </set>
+    where OrderId = #{orderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.TheOrderSheet">
+    <!--@mbg.generated-->
+    update the_order_sheet
+    set OrderNo = #{orderno,jdbcType=VARCHAR},
+      UserId = #{userid,jdbcType=VARCHAR},
+      TotalPrice = #{totalprice,jdbcType=INTEGER},
+      PayStatus = #{paystatus,jdbcType=INTEGER},
+      PayType = #{paytype,jdbcType=INTEGER},
+      PayTime = #{paytime,jdbcType=DATE},
+      OrderStatus = #{orderstatus,jdbcType=INTEGER},
+      ExtraInfo = #{extrainfo,jdbcType=VARCHAR},
+      UserAddress = #{useraddress,jdbcType=VARCHAR},
+      IsDeleted = #{isdeleted,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=DATE}
+    where OrderId = #{orderid,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectByUserID" resultType="com.domain.TheOrderSheet">
+    select
+    <include refid="Base_Column_List" />
+    from the_order_sheet
+    where UserId = #{userid,jdbcType=VARCHAR}
+
+  </select>
+
+  <select id="getLastOne" resultType="com.domain.TheOrderSheet">
+    select *
+
+    from the_order_sheet
+
+    ORDER BY OrderId DESC LIMIT 1
+
+  </select>
+  <!--      where OrderId = #{orderid,jdbcType=INTEGER}-->
+  <!--    <include refid="Base_Column_List" />-->
+</mapper>

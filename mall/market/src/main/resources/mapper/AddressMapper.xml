@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.AddressMapper">
+  <resultMap id="BaseResultMap" type="com.domain.Address">
+    <!--@mbg.generated-->
+    <!--@Table address-->
+    <id column="AddressId" jdbcType="INTEGER" property="addressid" />
+    <result column="UserId" jdbcType="INTEGER" property="userid" />
+    <result column="Receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="Phone" jdbcType="VARCHAR" property="phone" />
+    <result column="AddressInfo" jdbcType="VARCHAR" property="addressinfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    AddressId, UserId, Receiver, Phone, AddressInfo
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from address
+    where AddressId = #{addressid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.domain.Address">
+    <!--@mbg.generated-->
+    insert into address (AddressId, UserId, Receiver, 
+      Phone, AddressInfo)
+    values (#{addressid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{receiver,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{addressinfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.Address">
+    <!--@mbg.generated-->
+    insert into address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="addressid != null">
+        AddressId,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="receiver != null">
+        Receiver,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="addressinfo != null">
+        AddressInfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="addressid != null">
+        #{addressid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="addressinfo != null">
+        #{addressinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.Address">
+    <!--@mbg.generated-->
+    update address
+    <set>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null">
+        Receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="addressinfo != null">
+        AddressInfo = #{addressinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AddressId = #{addressid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.Address">
+    <!--@mbg.generated-->
+    update address
+    set UserId = #{userid,jdbcType=INTEGER},
+      Receiver = #{receiver,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      AddressInfo = #{addressinfo,jdbcType=VARCHAR}
+    where AddressId = #{addressid,jdbcType=INTEGER}
+  </update>
+
+
+    <select id="selectByUserID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    *
+    from address
+    where UserId = #{userid,jdbcType=VARCHAR}
+  </select>
+
+  <update id="setDefaultAddress">
+    update users_table set AddressInfo=#{AddressId,jdbcType=INTEGER} where UserId=#{UserId,javaType=String}
+  </update>
+
+      <select id="getDefaultAddress" resultType="com.domain.Address">
+    select a.AddressId,a.UserId,a.Receiver,a.Phone,a.AddressInfo as address from users_table u , address a
+    where u.AddressInfo=a.AddressId and u.UserId=#{userId,jdbcType=VARCHAR}
+      </select>
+
+</mapper>

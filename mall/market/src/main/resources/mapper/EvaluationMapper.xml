@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.EvaluationMapper">
+  <resultMap id="BaseResultMap" type="com.domain.Evaluation">
+    <!--@mbg.generated-->
+    <!--@Table evaluation-->
+    <id column="EvaluationId" jdbcType="INTEGER" property="evaluationid" />
+    <result column="UserId" jdbcType="INTEGER" property="userid" />
+    <result column="GoodsId" jdbcType="INTEGER" property="goodsid" />
+    <result column="Level" jdbcType="INTEGER" property="level" />
+    <result column="EvaluationInfo" jdbcType="VARCHAR" property="evaluationinfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    EvaluationId, UserId, GoodsId, `Level`, EvaluationInfo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from evaluation
+    where EvaluationId = #{evaluationid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from evaluation
+    where EvaluationId = #{evaluationid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.domain.Evaluation">
+    <!--@mbg.generated-->
+    insert into evaluation (EvaluationId, UserId, GoodsId, 
+      `Level`, EvaluationInfo)
+    values (#{evaluationid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, 
+      #{level,jdbcType=INTEGER}, #{evaluationinfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.Evaluation">
+    <!--@mbg.generated-->
+    insert into evaluation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="evaluationid != null">
+        EvaluationId,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="level != null">
+        `Level`,
+      </if>
+      <if test="evaluationinfo != null">
+        EvaluationInfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="evaluationid != null">
+        #{evaluationid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationinfo != null">
+        #{evaluationinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.Evaluation">
+    <!--@mbg.generated-->
+    update evaluation
+    <set>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `Level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationinfo != null">
+        EvaluationInfo = #{evaluationinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EvaluationId = #{evaluationid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.Evaluation">
+    <!--@mbg.generated-->
+    update evaluation
+    set UserId = #{userid,jdbcType=INTEGER},
+      GoodsId = #{goodsid,jdbcType=INTEGER},
+      `Level` = #{level,jdbcType=INTEGER},
+      EvaluationInfo = #{evaluationinfo,jdbcType=VARCHAR}
+    where EvaluationId = #{evaluationid,jdbcType=INTEGER}
+  </update>
+</mapper>

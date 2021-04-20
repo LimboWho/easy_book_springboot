@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TheCartTableMapper">
+  <resultMap id="BaseResultMap" type="com.domain.TheCartTable">
+    <!--@mbg.generated-->
+    <!--@Table the_cart_table-->
+    <id column="CartItemId" jdbcType="INTEGER" property="cartitemid" />
+    <result column="UserId" jdbcType="INTEGER" property="userid" />
+    <result column="GoodsId" jdbcType="INTEGER" property="goodsid" />
+    <result column="GoodsCount" jdbcType="INTEGER" property="goodscount" />
+    <result column="IsDeleted" jdbcType="INTEGER" property="isdeleted" />
+    <result column="CreateTime" jdbcType="DATE" property="createtime" />
+    <result column="UpdateTime" jdbcType="DATE" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    CartItemId, UserId, GoodsId, GoodsCount, IsDeleted, CreateTime, UpdateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from the_cart_table
+    where CartItemId = #{cartitemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from the_cart_table
+    where CartItemId = #{cartitemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.domain.TheCartTable">
+    <!--@mbg.generated-->
+    insert into the_cart_table (CartItemId, UserId, GoodsId, 
+      GoodsCount, IsDeleted, CreateTime, 
+      UpdateTime)
+    values (#{cartitemid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, 
+      #{goodscount,jdbcType=INTEGER}, #{isdeleted,jdbcType=INTEGER}, #{createtime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.TheCartTable">
+    <!--@mbg.generated-->
+    insert into the_cart_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cartitemid != null">
+        CartItemId,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="goodsid != null">
+        GoodsId,
+      </if>
+      <if test="goodscount != null">
+        GoodsCount,
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cartitemid != null">
+        #{cartitemid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodscount != null">
+        #{goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.TheCartTable">
+    <!--@mbg.generated-->
+    update the_cart_table
+    <set>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null">
+        GoodsId = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodscount != null">
+        GoodsCount = #{goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=DATE},
+      </if>
+    </set>
+    where CartItemId = #{cartitemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.TheCartTable">
+    <!--@mbg.generated-->
+    update the_cart_table
+    set UserId = #{userid,jdbcType=INTEGER},
+      GoodsId = #{goodsid,jdbcType=INTEGER},
+      GoodsCount = #{goodscount,jdbcType=INTEGER},
+      IsDeleted = #{isdeleted,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=DATE},
+      UpdateTime = #{updatetime,jdbcType=DATE}
+    where CartItemId = #{cartitemid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByUserID" resultType="com.domain.TheCartTable">
+    select
+    <include refid="Base_Column_List" />
+    from the_cart_table
+    where UserId = #{userid,jdbcType=INTEGER}
+
+</select>
+
+
+
+</mapper>

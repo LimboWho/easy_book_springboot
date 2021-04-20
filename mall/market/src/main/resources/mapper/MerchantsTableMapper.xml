@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.MerchantsTableMapper">
+  <resultMap id="BaseResultMap" type="com.domain.MerchantsTable">
+    <!--@mbg.generated-->
+    <!--@Table merchants_table-->
+    <id column="MerchantsID" jdbcType="INTEGER" property="merchantsid" />
+    <result column="NickName" jdbcType="VARCHAR" property="nickname" />
+    <result column="LoginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="PasswordMd5" jdbcType="VARCHAR" property="passwordmd5" />
+    <result column="IntroduceSign" jdbcType="VARCHAR" property="introducesign" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="IsDeleted" jdbcType="INTEGER" property="isdeleted" />
+    <result column="LockedFlag" jdbcType="INTEGER" property="lockedflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    MerchantsID, NickName, LoginName, PasswordMd5, IntroduceSign, Address, IsDeleted, 
+    LockedFlag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from merchants_table
+    where MerchantsID = #{merchantsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from merchants_table
+    where MerchantsID = #{merchantsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.domain.MerchantsTable">
+    <!--@mbg.generated-->
+    insert into merchants_table (MerchantsID, NickName, LoginName, 
+      PasswordMd5, IntroduceSign, Address, 
+      IsDeleted, LockedFlag)
+    values (#{merchantsid,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{loginname,jdbcType=VARCHAR}, 
+      #{passwordmd5,jdbcType=VARCHAR}, #{introducesign,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{isdeleted,jdbcType=INTEGER}, #{lockedflag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.MerchantsTable">
+    <!--@mbg.generated-->
+    insert into merchants_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="merchantsid != null">
+        MerchantsID,
+      </if>
+      <if test="nickname != null">
+        NickName,
+      </if>
+      <if test="loginname != null">
+        LoginName,
+      </if>
+      <if test="passwordmd5 != null">
+        PasswordMd5,
+      </if>
+      <if test="introducesign != null">
+        IntroduceSign,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted,
+      </if>
+      <if test="lockedflag != null">
+        LockedFlag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="merchantsid != null">
+        #{merchantsid,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordmd5 != null">
+        #{passwordmd5,jdbcType=VARCHAR},
+      </if>
+      <if test="introducesign != null">
+        #{introducesign,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="lockedflag != null">
+        #{lockedflag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.MerchantsTable">
+    <!--@mbg.generated-->
+    update merchants_table
+    <set>
+      <if test="nickname != null">
+        NickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginname != null">
+        LoginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordmd5 != null">
+        PasswordMd5 = #{passwordmd5,jdbcType=VARCHAR},
+      </if>
+      <if test="introducesign != null">
+        IntroduceSign = #{introducesign,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted = #{isdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="lockedflag != null">
+        LockedFlag = #{lockedflag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where MerchantsID = #{merchantsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.MerchantsTable">
+    <!--@mbg.generated-->
+    update merchants_table
+    set NickName = #{nickname,jdbcType=VARCHAR},
+      LoginName = #{loginname,jdbcType=VARCHAR},
+      PasswordMd5 = #{passwordmd5,jdbcType=VARCHAR},
+      IntroduceSign = #{introducesign,jdbcType=VARCHAR},
+      Address = #{address,jdbcType=VARCHAR},
+      IsDeleted = #{isdeleted,jdbcType=INTEGER},
+      LockedFlag = #{lockedflag,jdbcType=INTEGER}
+    where MerchantsID = #{merchantsid,jdbcType=INTEGER}
+  </update>
+
+  <select id="check" resultType="com.domain.MerchantsTable">
+  select <include refid="Base_Column_List" /> from merchants_table where LoginName=#{loginname,jdbcType=VARCHAR}
+  AND PasswordMd5=#{passwordmd5,jdbcType=VARCHAR}
+</select>
+</mapper>
