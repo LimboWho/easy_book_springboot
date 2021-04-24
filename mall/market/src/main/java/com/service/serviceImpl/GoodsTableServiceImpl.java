@@ -55,6 +55,16 @@ public class GoodsTableServiceImpl implements GoodsTableService {
     }
 
     @Override
+    public List<GoodsTable> allowlist() {
+        return goodsTableMapper.allowlist();
+    }
+
+    @Override
+    public List<GoodsTable> notallowlist() {
+        return goodsTableMapper.notallowlist();
+    }
+
+    @Override
     public List<GoodsTable> queryByType(Integer typeid) {
         return goodsTableMapper.queryByType(typeid);
     }

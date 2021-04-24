@@ -25,16 +25,42 @@ public class GoodsController {
     GoodsTableService goodsTableService;
 
     /**
-     * 返回所有货物
+     * 返回审核后的货物
      * @return
      */
     @RequestMapping("list")
 //    @UserLoginToken
     public HashMap<String, List<GoodsTable>> list(){
         HashMap<String, List<GoodsTable>> map = new HashMap<>();
+        map.put("data",goodsTableService.allowlist());
+        return map;
+    }
+
+    /**
+     * 返回所有货物
+     * @return
+     */
+    @RequestMapping("allList")
+//    @UserLoginToken
+    public HashMap<String, List<GoodsTable>> allList(){
+        HashMap<String, List<GoodsTable>> map = new HashMap<>();
         map.put("data",goodsTableService.list());
         return map;
     }
+
+
+    /**
+     * 返回未审核的货物
+     * @return
+     */
+    @RequestMapping("checkList")
+//    @UserLoginToken
+    public HashMap<String, List<GoodsTable>> checkList(){
+        HashMap<String, List<GoodsTable>> map = new HashMap<>();
+        map.put("data",goodsTableService.notallowlist());
+        return map;
+    }
+
 
     /**
      * 根据id查询货物

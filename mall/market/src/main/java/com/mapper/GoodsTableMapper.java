@@ -24,6 +24,10 @@ public interface GoodsTableMapper {
 
     List<GoodsTable> list();
 
+    List<GoodsTable> allowlist();
+
+    List<GoodsTable> notallowlist();
+
     List<GoodsTable> queryByType(Integer typeId);
 
     List<GoodsTable> queryByTypeUser(String  CreateUser);

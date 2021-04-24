@@ -266,6 +266,10 @@
 
   <select id="list" resultType="com.domain.GoodsTable">select <include refid="Base_Column_List" /> from goods_table</select>
 
+  <select id="allowlist" resultType="com.domain.GoodsTable">select<include refid="Base_Column_List" /> from goods_table where GoodsSellStatus=1 </select>
+
+  <select id="notallowlist" resultType="com.domain.GoodsTable">select<include refid="Base_Column_List" /> from goods_table where GoodsSellStatus=0 </select>
+
   <select id="queryByType" resultMap="BaseResultMap">
   select <include refid="Base_Column_List" /> from goods_table where GoodsCategoryId=#{typeId,jdbcType=INTEGER}
     </select>
